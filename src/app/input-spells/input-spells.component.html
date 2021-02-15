@@ -1,21 +1,20 @@
-<p>input-spells works!</p>
+<h2>Meine Zaubersprüche</h2>
+<ul class="spells">
+  <li *ngFor="let spell of spells"
+    [class.selected]="spell === selectedSpell"
+   (click)="onSelect(spell)">
+    <span class="badge">{{spell.name}}</span> <span class="grad"> {{spell.grad}} </span> <span class="class">{{spell.class}}</span>
+  </li>
+</ul>
 
-<h2>{{hero.name | uppercase}} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
 
-<div>
-  <label>name:
-    <input [(ngModel)]="hero.name" placeholder="name" />
-  </label>
+<div *ngIf="selectedSpell">
+  <h2>{{selectedSpell.name | uppercase}} Details</h2>
+  <div><span>Grad: </span> {{selectedSpell.grad}}</div>
+  <div><span>Klasse: </span> {{selectedSpell.class}}</div>
+  <div>
+    <label>Zauber:
+      <input [(ngModel)]="selectedSpell.name" placeholder="Zauber" />
+    </label>
+  </div>
 </div>
-
-<h2>{{spell.name | uppercase}}</h2>
-<div><strong>Grad: </strong>{{spell.grad}}</div>
-<div><strong>Zeitaufwand: </strong>{{spell.time}}</div>
-<div><strong>Reichweite: </strong>{{spell.range}}</div>
-<div><strong>Komponenten: </strong>{{spell.components}}</div>
-<div><strong>Wirkungsdauer: </strong>{{spell.duration}}</div>
-<div><strong>Schaden: </strong>{{spell.damage}}</div>
-<div><strong>Rettungswurf: </strong>{{spell.rescue}}</div>
-<div><strong>Seite: </strong>{{spell.page}}</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Hero } from '../hero';
-import { Spells } from '../spells';
+import { Spell } from '../spell';
+import { SPELLS } from '../spell-list';
 
 @Component({
   selector: 'app-input-spells',
@@ -9,6 +10,14 @@ import { Spells } from '../spells';
   styleUrls: ['./input-spells.component.css']
 })
 export class InputSpellsComponent implements OnInit {
+
+  spells = SPELLS;
+
+  // click event spell
+  selectedSpell?: Spell;
+  onSelect(spell: Spell): void {
+    this.selectedSpell = spell;
+  }
 
   constructor() { }
 
@@ -20,15 +29,16 @@ export class InputSpellsComponent implements OnInit {
     name: 'windstorm'
   }
 
-  spell: Spells = {
+  spell: Spell = {
     name: 'Ebenwechsel',
+    class: 'Magier',
     grad: 7,
-    time: '1 Aktion',
-    range: 'Berührung',
-    components: 'V, G, M (ein gegabelter Metallstab im Wert von Mindestens 250gm, eingestimmt auf die gewünschte Existenzebene)',
-    duration: 'unmittelbar',
-    damage: '...',
-    rescue: '...',
-    page: 223
+    // time: '1 Aktion',
+    // range: 'Berührung',
+    // components: 'V, G, M (ein gegabelter Metallstab im Wert von Mindestens 250gm, eingestimmt auf die gewünschte Existenzebene)',
+    // duration: 'unmittelbar',
+    // damage: '...',
+    // rescue: '...',
+    // page: 223
   }
 }
