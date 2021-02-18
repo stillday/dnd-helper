@@ -1,4 +1,11 @@
 <p>spell-detail works!</p>
 <div *ngIf="spell">
-  <h2> </h2>
+  <h2>{{ spell.name || uppercase }}</h2>
+  <div><span>Grad: </span>{{ spell.grad }}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="spell.name" placeholder="name" />
+    </label>
+
+  </div>
 </div>
