@@ -1,5 +1,6 @@
 export interface Spell {
   name: string;
+  // id: number;
   class: string;
   grad: number;
   // time: string;
