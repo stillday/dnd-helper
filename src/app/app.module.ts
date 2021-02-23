@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { InputSpellsComponent } from './input-spells/input-spells.component';
 import { SpellDetailComponent } from './spell-detail/spell-detail.component';
 import { SpellComponent } from './spell/spell.component';
+import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputSpellsComponent,
     SpellDetailComponent,
-    SpellComponent
+    SpellComponent,
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

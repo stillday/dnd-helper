@@ -33,6 +33,7 @@ export class InputSpellsComponent implements OnInit {
     name: 'Ebenwechsel',
     class: 'Magier',
     grad: 7,
+    id: 0,
     // time: '1 Aktion',
     // range: 'Berührung',
     // components: 'V, G, M (ein gegabelter Metallstab im Wert von Mindestens 250gm, eingestimmt auf die gewünschte Existenzebene)',

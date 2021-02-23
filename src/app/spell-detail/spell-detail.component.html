@@ -1,11 +1,9 @@
-<p>spell-detail works!</p>
 <div *ngIf="spell">
   <h2>{{ spell.name || uppercase }}</h2>
   <div><span>Grad: </span>{{ spell.grad }}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="spell.name" placeholder="name" />
-    </label>
-
+    <label for="spell-name">Spell name:</label>
+      <input id="spell-name" [(ngModel)]="spell.name" placeholder="name" />
   </div>
+  <button (click)="goBack()">go back </button>
 </div>

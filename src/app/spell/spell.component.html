@@ -1,11 +1,8 @@
 <h2>Meine Zaubersprüche</h2>
 <ul class="spells">
-  <li *ngFor="let spell of spells"
-    [class.selected]="spell === selectedSpell"
-   (click)="onSelect(spell)">
-    <span class="badge">{{spell.name}}</span> <span class="grad"> {{spell.grad}} </span> <span class="class">{{spell.class}}</span>
+  <li *ngFor="let spell of spells">
+    <a routerLink="/detail/{{spell.id}}">
+      <span class="badge">{{spell.name}}</span> <span class="grad"> {{spell.grad}} </span> <span class="class">{{spell.class}}</span>
+    </a>
   </li>
 </ul>
-
-
-<app-spell-detail [spell]="selectedSpell"></app-spell-detail>

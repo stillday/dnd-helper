@@ -1,4 +1,9 @@
 <div>
-<h1>{{ title }}</h1>
-<app-spell></app-spell>
+<h1 id="main-content-hearder">{{ title }}</h1>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/spell">Spells</a>
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
 </div>
