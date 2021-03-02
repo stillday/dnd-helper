@@ -44,9 +44,11 @@ export class SpellService {
   }
 
   getSpell(id: number): Observable<Spell> {
-    // TODO: send the message _after_ fetching the hero
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(SPELLS.find(spell => spell.id === id));
+    const url = `${this.spellsUrl}/${id}`;
+    return this.http.get<Spell>(url).pipe(
+      tap(_ => this.log(`fetched spell id=${id}`)),
+      catchError(this.handleError<Spell>(`getSpell id=${id}`))
+    );
   }
 
   /** Log a HeroService message with the MessageService */
