@@ -1,20 +1,12 @@
 <h2>Meine Zaubersprüche</h2>
-<ul class="spells">
-  <li *ngFor="let spell of spells"
-    [class.selected]="spell === selectedSpell"
-   (click)="onSelect(spell)">
-    <span class="badge">{{spell.name}}</span> <span class="grad"> {{spell.grad}} </span> <span class="class">{{spell.class}}</span>
-  </li>
-</ul>
+<div>
+  <label id="new-spell">Spell name: </label>
+  <input for="new-spell" #spellName />
 
-
-<div *ngIf="selectedSpell">
-  <h2>{{selectedSpell.name | uppercase}} Details</h2>
-  <div><span>Grad: </span> {{selectedSpell.grad}}</div>
-  <div><span>Klasse: </span> {{selectedSpell.class}}</div>
-  <div>
-    <label>Zauber:
-      <input [(ngModel)]="selectedSpell.name" placeholder="Zauber" />
-    </label>
-  </div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="add-button" (click)="add(spellName.value); spellName.value=''">
+    Add hero
+  </button>
 </div>
+
+ <button (click)="goBack()">go back </button>

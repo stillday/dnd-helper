@@ -32,4 +32,9 @@ export class SpellDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.spellService.updateSpell(this.spell)
+      .subscribe(() => this.goBack());
+  }
+
 }

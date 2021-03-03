@@ -18,7 +18,7 @@ export class SpellService {
   getSpells(): Observable<Spell[]> {
     return this.http.get<Spell[]>(this.spellsUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')),
+        tap(_ => this.log('fetched spells')),
         catchError(this.handleError<Spell[]>('getSpells', []))
       )
   }
@@ -50,6 +50,26 @@ export class SpellService {
       catchError(this.handleError<Spell>(`getSpell id=${id}`))
     );
   }
+
+  /** PUT: update the hero on the server */
+  updateSpell(spell: Spell): Observable<any> {
+    return this.http.put(this.spellsUrl, spell, this.httpOptions).pipe(
+      tap(_ => this.log(`updated spell id=${spell.id}`)),
+      catchError(this.handleError<any>('updateSpell'))
+    )
+  }
+
+  /** POST: add a new hero to the server */
+  addSpell(spell: Spell): Observable<Spell> {
+    return this.http.post<Spell>(this.spellsUrl, spell, this.httpOptions).pipe(
+      tap((newSpell: Spell) => this.log(`added spell /w id=${newSpell.id}`)),
+      catchError(this.handleError<Spell>('addSpell'))
+    );
+  }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  };
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {

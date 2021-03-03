@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Hero } from '../hero';
+import { Component, OnInit, Input } from '@angular/core';
 import { Spell } from '../spell';
-import { SPELLS } from '../spell-list';
+import { Location } from '@angular/common';
+import { SpellService } from '../spell.service';
+
 
 @Component({
   selector: 'app-input-spells',
@@ -11,35 +11,28 @@ import { SPELLS } from '../spell-list';
 })
 export class InputSpellsComponent implements OnInit {
 
-  spells = SPELLS;
+  spells: Spell[];
 
-  // click event spell
-  selectedSpell?: Spell;
-  onSelect(spell: Spell): void {
-    this.selectedSpell = spell;
-  }
-
-  constructor() { }
+  constructor(
+    private location: Location,
+    private spellService: SpellService,
+  ) { }
 
   ngOnInit(): void {
   }
 
-  hero: Hero = {
-    id: 1,
-    name: 'windstorm'
+  add (name: string): void {
+    name= name.trim();
+    if(!name) {return;}
+    this.spellService.addSpell({ name } as Spell)
+      .subscribe(spell => {
+        this.spells.push(spell);
+      });
   }
 
-  spell: Spell = {
-    name: 'Ebenwechsel',
-    class: 'Magier',
-    grad: 7,
-    id: 0,
-    // time: '1 Aktion',
-    // range: 'Berührung',
-    // components: 'V, G, M (ein gegabelter Metallstab im Wert von Mindestens 250gm, eingestimmt auf die gewünschte Existenzebene)',
-    // duration: 'unmittelbar',
-    // damage: '...',
-    // rescue: '...',
-    // page: 223
+
+  goBack(): void {
+    this.location.back();
   }
+
 }
