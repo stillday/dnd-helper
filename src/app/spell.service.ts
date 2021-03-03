@@ -67,6 +67,16 @@ export class SpellService {
     );
   }
 
+  deleteSpell(spell: Spell | number): Observable<Spell> {
+    const id = typeof spell === 'number' ? spell : spell.id;
+    const url = `${this.spellsUrl}/${id}`;
+
+    return this.http.delete<Spell>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted spell id=${id}`)),
+      catchError(this.handleError<Spell>('deleteSpell'))
+    );
+  }
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };

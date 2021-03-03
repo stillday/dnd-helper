@@ -4,5 +4,6 @@
     <a routerLink="/detail/{{spell.id}}">
       <span class="badge">{{spell.name}}</span> <span class="grad"> {{spell.grad}} </span> <span class="class">{{spell.class}}</span>
     </a>
+    <button class="delete" title="delete spell" (click)="delete(spell)">x</button>
   </li>
 </ul>

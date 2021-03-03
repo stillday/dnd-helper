@@ -21,4 +21,9 @@ export class SpellComponent implements OnInit {
     this.spellService.getSpells()
         .subscribe(spells => this.spells = spells);
   }
+
+  delete(spell: Spell): void {
+    this.spells = this.spells.filter(h => h !== spell);
+    this.spellService.deleteSpell(spell).subscribe();
+  }
 }
