@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { ReturnStatement } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,20 @@ export class SpellService {
     );
   }
 
+  /* GET Spell whose name contains search term */
+  searchSpell(term: string): Observable<Spell[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Spell[]>(`${this.spellsUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+        this.log(`found spell matching "${term}"`) :
+        this.log(`no spell matching "${term}"`),
+      catchError(this.handleError<Spell[]>('searchSpell', []))
+      )
+    )
+  }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };

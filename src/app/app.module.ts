@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { SpellSearchComponent } from './spell-search/spell-search.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     SpellDetailComponent,
     SpellComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    SpellSearchComponent
   ],
   imports: [
     BrowserModule,
