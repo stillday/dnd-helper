@@ -2,9 +2,11 @@
 <div>
   <label id="new-spell">Spell name: </label>
   <input for="new-spell" #spellName />
+  <label id="new-spell-class">Spell Class: </label>
+  <input for="new-spell-class" #spellClass />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="add(spellName.value); spellName.value=''">
+  <button class="add-button" (click)="add(spellName.value && spellClass.value); spellName.value='' && spellClass.value=''">
     Add hero
   </button>
 </div>
