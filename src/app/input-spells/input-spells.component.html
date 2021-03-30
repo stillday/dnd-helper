@@ -2,13 +2,12 @@
 <div>
   <label id="new-spell">Spell name: </label>
   <input for="new-spell" #spellName />
-  <label id="new-spell-class">Spell Class: </label>
-  <input for="new-spell-class" [(ngModel)]="spellClassy"  #spellClass />
+ 
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button class="add-button" (click)="add(spellName.value, spellClass.value); spellName.value=''; spellClass.value=''">
+  <!-- <button class="add-button" (click)="add(spellName.value, spellCaster.value); spellName.value=''; spellCaster.value=''">
     Add hero
-  </button>
+  </button> -->
 </div>
 
  <button (click)="goBack()">go back </button>

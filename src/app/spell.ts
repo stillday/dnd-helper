@@ -1,7 +1,7 @@
 export interface Spell {
   name: string;
   id: number;
-  class: string; // ToDo: rename class 
+  caster: string; // ToDo: rename class 
   grad: number;
   // time: string;
   // range: string;

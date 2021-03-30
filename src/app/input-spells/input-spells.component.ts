@@ -12,7 +12,7 @@ import { SpellService } from '../spell.service';
 export class InputSpellsComponent implements OnInit {
 
   spells: Spell[];
-  spellClassy: string = "";
+  spellCaster: string = "";
 
   constructor(
     private location: Location,
@@ -22,11 +22,11 @@ export class InputSpellsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  add (name: string, spellClass: string): void {
-    console.log(this.spellClassy);
+  add (name: string, spellCaster: string): void {
+    console.log(this.spellCaster);
     name= name.trim();
     if(!name) {return;}
-    this.spellService.addSpell({ name, class: this.spellClassy } as Spell)
+    this.spellService.addSpell({ name, caster: this.spellCaster } as Spell)
       .subscribe(spell => {
         this.spells.push(spell);
       });
